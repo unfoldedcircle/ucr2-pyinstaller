@@ -1,0 +1,13 @@
+pyinstaller==6.1.0
+
+# Common dependencies of our Python integrations.
+# Pre-installing them in the builder image allows much faster builds on amd64
+# machines with qemu arm64 emulation. This saves up to 20 min of build times!
+asyncio==3.4.3
+pyee==9.0.4
+websockets==11.0.3
+zeroconf==0.119.0
+
+# device communication libraries
+androidtvremote2==0.0.14
+denonavr==0.11.4
