@@ -18,6 +18,7 @@ ENV HOME=/home/builder
 ENV PATH=/home/builder/.local/bin:$PATH
 
 USER 1000:1000
+WORKDIR /workspace
 
 # Labels, see: https://github.com/opencontainers/image-spec/blob/master/annotations.md
 ARG BUILD_DATE
