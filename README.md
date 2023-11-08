@@ -45,7 +45,7 @@ docker run --rm -it \
   --platform=aarch64 \
   --user=$(id -u):$(id -g) \  
   -v ~/my-project-folder:/workspace \
-  docker.io/unfoldedcircle/r2-pyinstaller:3.10.13 bash
+  docker.io/unfoldedcircle/r2-pyinstaller:3.11.6 bash
 ```
 
 ### aarch64 Linux / macOS
@@ -54,7 +54,7 @@ docker run --rm -it \
 docker run --rm -it \
   --user=$(id -u):$(id -g) \
   -v ~/my-project-folder:/workspace \
-  docker.io/unfoldedcircle/r2-pyinstaller:3.10.13 bash
+  docker.io/unfoldedcircle/r2-pyinstaller:3.11.6 bash
 ```
 
 ### Manual Build
