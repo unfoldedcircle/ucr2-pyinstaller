@@ -11,6 +11,13 @@ _Changes for the next release will be listed here_
 
 ---
 
+## 0.2.0 - 2023-11-08
+### Changed
+- Use Python 3.11
+- Remove asyncio library. Not required for new Python versions.
+- Update zeroconf library and relax dependency versions.
+- Create a Docker image only for release builds.
+
 ## 0.1.0 - 2023-11-03
 ### Added
-- Initial release.
+- Initial internal release.
