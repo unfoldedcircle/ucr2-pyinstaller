@@ -63,7 +63,7 @@ jobs:
 
   container:
     name: Create Docker image
-#    if: "contains(github.ref, 'tags/v')" # only publish for releases!
+    if: "contains(github.ref, 'tags/v')" # only publish for releases!
     runs-on: ubuntu-22.04
     needs: release
 
