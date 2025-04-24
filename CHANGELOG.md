@@ -11,6 +11,7 @@ _Changes for the next release will be listed here_
 
 ### Changed
 - Update Python 3.11.12
+- Update and add more pre-installed Python libraries.
 
 ---
 
