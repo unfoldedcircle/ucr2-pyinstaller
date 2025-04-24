@@ -2,7 +2,7 @@
 
 set -o errexit
 
-PYTHON_VERSION=3.11.6
+PYTHON_VERSION=3.11.12
 
 VERSION_ARGS="--build-arg PYTHON_VERSION=$PYTHON_VERSION"
 
@@ -12,6 +12,6 @@ BUILD_LABELS="\
 --build-arg VERSION=${VERSION} \
 --build-arg REVISION=$(git log -1 --format="%H")"
 
-docker build $VERSION_ARGS $BUILD_LABELS \
+docker build --progress plain $VERSION_ARGS $BUILD_LABELS \
     -t unfoldedcircle/r2-pyinstaller:$PYTHON_VERSION \
     -t unfoldedcircle/r2-pyinstaller:$PYTHON_VERSION-$VERSION .

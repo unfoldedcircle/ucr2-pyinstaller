@@ -14,19 +14,17 @@ on:
 env:
   DEBUG_OUTPUT: "true"
   PROJECT_NAME: ucr2-toolchain
-  PYTHON_VERSION: "3.11.6"
+  PYTHON_VERSION: "3.11.12"
   CONTAINER_IMAGE_NAME: unfoldedcircle/r2-pyinstaller
 
 jobs:
   release:
     name: Create Release
-    # push on main without a version = development pre-release
-    if: github.ref == 'refs/heads/main' || contains(github.ref, 'tags/v')
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout ${{ env.PROJECT_NAME}}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           # History of 100 should be more than enough to calculate commit count since last release tag.
           fetch-depth: 100
@@ -45,26 +43,35 @@ jobs:
           echo "IMG_VERSION=$IMG_VERSION" >> $GITHUB_ENV
           echo "TIMESTAMP=$(date +"%Y%m%d_%H%M%S")" >> $GITHUB_ENV
 
-      - name: Create Pre-Release ${{ env.IMG_VERSION }}
-        uses: "marvinpinto/action-automatic-releases@latest"
+      # We have to delete the "latest" release, otherwise `softprops/action-gh-release` will only append the new artifact.
+      # This simulates the old marvinpinto/action-automatic-releases action.
+      - name: Remove previous pre-release
+        run: |
+          cd ${{ env.PROJECT_NAME}}
+          gh release delete latest --cleanup-tag -y || true
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Create Pre-Release
+        uses: softprops/action-gh-release@v2
         if: "!contains(github.ref, 'tags/v')"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
           prerelease: true
-          title: "Development Build ${{ env.IMG_VERSION }}"
+          tag_name: latest
+          generate_release_notes: true
+          name: "Development Build ${{ env.IMG_VERSION }}"
 
-      - name: Create Release ${{ env.IMG_VERSION }}
-        uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         if: "contains(github.ref, 'tags/v')"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
+          generate_release_notes: true
 
   container:
     name: Create Docker image
     if: "contains(github.ref, 'tags/v')" # only publish for releases!
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: release
 
     steps:
@@ -109,9 +116,23 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        if: "contains(github.ref, 'tags/v')"
+        uses: docker/build-push-action@v6
         with:
           push: true
+          build-args: |
+            PYTHON_VERSION=${{ env.PYTHON_VERSION }}
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            VERSION=${{ env.IMG_VERSION }}
+            REVISION=${{ env.GITHUB_SHA }}
+          platforms: aarch64
+          tags: ${{ env.IMAGE_TAGS }}
+
+      - name: Build local Docker image (test mode)
+        if: "!contains(github.ref, 'tags/v')"
+        uses: docker/build-push-action@v6
+        with:
+          push: false
           build-args: |
             PYTHON_VERSION=${{ env.PYTHON_VERSION }}
             BUILD_DATE=${{ env.BUILD_DATE }}
