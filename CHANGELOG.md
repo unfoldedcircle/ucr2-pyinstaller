@@ -9,15 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _Changes for the next release will be listed here_
 
-### Changed
-- Update Python 3.11.12
-- Update and add more pre-installed Python libraries.
-
 ---
+
+## 0.3.0 - 2025-04-24
+### Changed
+- Use Python 3.11.12
+- Update and add more pre-installed Python libraries.
 
 ## 0.2.0 - 2023-11-08
 ### Changed
-- Use Python 3.11
+- Use Python 3.11.6
 - Remove asyncio library. Not required for new Python versions.
 - Update zeroconf library and relax dependency versions.
 - Create a Docker image only for release builds.
