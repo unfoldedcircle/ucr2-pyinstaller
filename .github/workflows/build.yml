@@ -13,7 +13,7 @@ on:
 
 env:
   DEBUG_OUTPUT: "true"
-  PROJECT_NAME: ucr2-toolchain
+  PROJECT_NAME: ucr2-pyinstaller
   PYTHON_VERSION: "3.11.12"
   CONTAINER_IMAGE_NAME: unfoldedcircle/r2-pyinstaller
 
@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout ${{ env.PROJECT_NAME}}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # History of 100 should be more than enough to calculate commit count since last release tag.
           fetch-depth: 100
