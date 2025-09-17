@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _Changes for the next release will be listed here_
 
 ### Changed
+- Use Python 3.11.13
 - Update pre-installed Python libraries.
 
 ### Fixed
