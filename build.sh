@@ -12,6 +12,6 @@ BUILD_LABELS="\
 --build-arg VERSION=${VERSION} \
 --build-arg REVISION=$(git log -1 --format="%H")"
 
-docker build --progress plain $VERSION_ARGS $BUILD_LABELS \
+docker build --platform=aarch64 --progress plain $VERSION_ARGS $BUILD_LABELS \
     -t unfoldedcircle/r2-pyinstaller:$PYTHON_VERSION \
     -t unfoldedcircle/r2-pyinstaller:$PYTHON_VERSION-$VERSION .

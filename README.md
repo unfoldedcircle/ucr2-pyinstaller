@@ -36,7 +36,7 @@ Example usage for manual builds.
 
 Install qemu to run aarch64 Docker images: 
 ```bash
-sudo apt update && sudo apt install -y qemu binfmt-support qemu-user-static
+sudo apt update && sudo apt install -y qemu-system-arm binfmt-support qemu-user-static
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 ```
 
