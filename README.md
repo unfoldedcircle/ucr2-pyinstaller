@@ -36,7 +36,7 @@ Example usage for manual builds.
 
 Install qemu to run aarch64 Docker images: 
 ```bash
-sudo apt update && sudo apt install -y qemu binfmt-support qemu-user-static
+sudo apt update && sudo apt install -y qemu-system-arm binfmt-support qemu-user-static
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 ```
 
@@ -45,7 +45,7 @@ docker run --rm -it \
   --platform=aarch64 \
   --user=$(id -u):$(id -g) \  
   -v ~/my-project-folder:/workspace \
-  docker.io/unfoldedcircle/r2-pyinstaller:3.11.12 bash
+  docker.io/unfoldedcircle/r2-pyinstaller:3.11.13 bash
 ```
 
 ### aarch64 Linux / macOS
@@ -54,7 +54,7 @@ docker run --rm -it \
 docker run --rm -it \
   --user=$(id -u):$(id -g) \
   -v ~/my-project-folder:/workspace \
-  docker.io/unfoldedcircle/r2-pyinstaller:3.11.12 bash
+  docker.io/unfoldedcircle/r2-pyinstaller:3.11.13 bash
 ```
 
 ### Manual Build
