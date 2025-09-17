@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _Changes for the next release will be listed here_
 
+---
+
+## 0.4.0 - 2025-09-17
 ### Changed
 - Use Python 3.11.13
 - Update pre-installed Python libraries.
@@ -16,8 +19,6 @@ _Changes for the next release will be listed here_
 ### Fixed
 - Instructions for setting up qemu.
 - Using `--platform=aarch64` in the build helper script.
-
----
 
 ## 0.3.0 - 2025-04-24
 ### Changed
