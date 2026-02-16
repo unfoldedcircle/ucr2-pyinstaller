@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout ${{ env.PROJECT_NAME}}
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           # History of 100 should be more than enough to calculate commit count since last release tag.
           fetch-depth: 100
@@ -70,7 +70,7 @@ jobs:
 
   container:
     name: Create Docker image
-    if: "contains(github.ref, 'tags/v')" # only publish for releases!
+    if: github.ref == 'refs/heads/main' || contains(github.ref, 'tags/v')
     runs-on: ubuntu-24.04
     needs: release
 
@@ -125,7 +125,7 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             VERSION=${{ env.IMG_VERSION }}
             REVISION=${{ env.GITHUB_SHA }}
-          platforms: aarch64
+          platforms: linux/arm64/v8
           tags: ${{ env.IMAGE_TAGS }}
 
       - name: Build local Docker image (test mode)
@@ -138,5 +138,5 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             VERSION=${{ env.IMG_VERSION }}
             REVISION=${{ env.GITHUB_SHA }}
-          platforms: aarch64
+          platforms: linux/arm64/v8
           tags: ${{ env.IMAGE_TAGS }}

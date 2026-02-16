@@ -42,7 +42,7 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
 ```shell
 docker run --rm -it \
-  --platform=aarch64 \
+  --platform=linux/arm64/v8 \
   --user=$(id -u):$(id -g) \  
   -v ~/my-project-folder:/workspace \
   docker.io/unfoldedcircle/r2-pyinstaller:3.11.13 bash

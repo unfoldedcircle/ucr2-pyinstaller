@@ -1,22 +1,19 @@
-pyinstaller~=6.16.0
+pyinstaller~=6.19.0
 
 # Common dependencies of our Python integrations.
 # Pre-installing them in the builder image allows much faster builds on amd64
 # machines with qemu arm64 emulation. This saves up to 20 min of build times!
-pyee~=13.0
-websockets~=15.0
+pyee~=13.0.1
+websockets~=16.0
 zeroconf~=0.147
 
 # Integration specific libraries. PyInstaller only includes required libraries.
 # Android TV integration
-androidtvremote2~=0.2.1
-google_play_scraper~=1.2
-pillow~=11.2
-requests~=2.32
-pychromecast~=14.0
+androidtvremote2~=0.3.0
+google_play_scraper~=1.2.7
+pillow~=12.1.1
+requests~=2.32.5
+pychromecast~=14.0.9
 
 # Apple TV integration
-pyatv~=0.16
-
-# Denon AVR integration
-denonavr~=1.1
+pyatv~=0.17.0
