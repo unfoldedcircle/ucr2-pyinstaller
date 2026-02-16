@@ -1,5 +1,5 @@
 ARG PYTHON_VERSION=3.11.13
-FROM arm64v8/python:${PYTHON_VERSION}-bullseye
+FROM python:${PYTHON_VERSION}-bullseye
 
 VOLUME /workspace
 
