@@ -53,7 +53,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Create Pre-Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         if: "!contains(github.ref, 'tags/v')"
         with:
           prerelease: true
@@ -62,7 +62,7 @@ jobs:
           name: "Development Build ${{ env.IMG_VERSION }}"
 
       - name: Create Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         if: "contains(github.ref, 'tags/v')"
         with:
           prerelease: false
