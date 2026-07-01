@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _Changes for the next release will be listed here_
 
 ### Changed
-- Use pinned GitHub Actions dependencies and enable Dependabot for GitHub Actions.
+- Use pinned GitHub Actions dependencies and enable Dependabot for GitHub Actions ([#6](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/6)).
+- Update pyinstaller and pre-installed Python libraries
 
 ---
 
