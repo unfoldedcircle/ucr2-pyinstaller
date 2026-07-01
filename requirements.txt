@@ -12,7 +12,7 @@ zeroconf~=0.150
 androidtvremote2~=0.3.1
 google_play_scraper~=1.2.7
 pillow~=12.3.0
-requests~=2.33.1
+requests~=2.34.2
 pychromecast~=14.0.10
 
 # Apple TV integration
