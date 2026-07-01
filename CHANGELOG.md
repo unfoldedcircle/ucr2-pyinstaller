@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _Changes for the next release will be listed here_
 
+### Changed
+- Use pinned GitHub Actions dependencies and enable Dependabot for GitHub Actions.
+
 ---
 
 ## 0.6.0 - 2026-04-27
