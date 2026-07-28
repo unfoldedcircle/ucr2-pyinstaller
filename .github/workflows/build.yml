@@ -71,7 +71,7 @@ jobs:
   container:
     name: Create Docker image
     if: github.ref == 'refs/heads/main' || contains(github.ref, 'tags/v')
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     needs: release
 
     steps:
@@ -104,8 +104,6 @@ jobs:
           echo "REVISION  : ${{ env.GITHUB_SHA }}"
           echo "IMAGE_TAGS: ${{ env.IMAGE_TAGS }}"
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@96fe6ef7f33517b61c61be40b68a1882f3264fb8 # v4.2.0
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
 
@@ -125,7 +123,6 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             VERSION=${{ env.IMG_VERSION }}
             REVISION=${{ env.GITHUB_SHA }}
-          platforms: linux/arm64/v8
           tags: ${{ env.IMAGE_TAGS }}
 
       - name: Build local Docker image (test mode)
@@ -138,5 +135,4 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             VERSION=${{ env.IMG_VERSION }}
             REVISION=${{ env.GITHUB_SHA }}
-          platforms: linux/arm64/v8
           tags: ${{ env.IMAGE_TAGS }}
