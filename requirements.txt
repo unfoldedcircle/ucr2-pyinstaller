@@ -1,4 +1,4 @@
-pyinstaller~=6.21.0
+pyinstaller~=6.22.0
 
 # Common dependencies of our Python integrations.
 # Pre-installing them in the builder image allows much faster builds on amd64
