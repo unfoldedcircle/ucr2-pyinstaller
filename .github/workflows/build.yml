@@ -76,6 +76,21 @@ jobs:
 
     steps:
 
+      - name: Checkout ${{ env.PROJECT_NAME}}
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          sparse-checkout: 'Dockerfile'
+          fetch-depth: 0
+
+      - name: Verify Dockerfile base image matches PYTHON_VERSION
+        run: |
+          DOCKERFILE_VERSION=$(grep -oP '(?<=^FROM python:)[0-9.]+(?=-bullseye@sha256:)' Dockerfile)
+          if [ "$DOCKERFILE_VERSION" != "$PYTHON_VERSION" ]; then
+            echo "::error::Dockerfile base image version ($DOCKERFILE_VERSION) does not match workflow PYTHON_VERSION ($PYTHON_VERSION)"
+            exit 1
+          fi
+          echo "Dockerfile base image version matches PYTHON_VERSION ($DOCKERFILE_VERSION)"
+
       - name: Set image labels
         run: |
           echo "VERSION=$(git describe --match "v[0-9]*" --tags HEAD --always)" >> GITHUB_ENV
@@ -119,7 +134,6 @@ jobs:
         with:
           push: true
           build-args: |
-            PYTHON_VERSION=${{ env.PYTHON_VERSION }}
             BUILD_DATE=${{ env.BUILD_DATE }}
             VERSION=${{ env.IMG_VERSION }}
             REVISION=${{ env.GITHUB_SHA }}
@@ -131,7 +145,6 @@ jobs:
         with:
           push: false
           build-args: |
-            PYTHON_VERSION=${{ env.PYTHON_VERSION }}
             BUILD_DATE=${{ env.BUILD_DATE }}
             VERSION=${{ env.IMG_VERSION }}
             REVISION=${{ env.GITHUB_SHA }}
