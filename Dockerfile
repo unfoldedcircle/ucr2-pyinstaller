@@ -1,5 +1,4 @@
-ARG PYTHON_VERSION=3.11.13
-FROM python:${PYTHON_VERSION}-bullseye
+FROM python:3.11.13-bullseye@sha256:df0bd610af061603b29d63eb82027b64d5a3f15506e39270422b10b2a55079fc
 
 VOLUME /workspace
 
