@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-_Changes for the next release will be listed here_
-
 ---
+
+## 0.8.0 - 2026-10-19
+### Changed
+- Update GitHub Actions dependencies and improve CI workflow ([#11](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/11), [#14](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/14), [#15](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/15), [#17](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/17), [#24](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/24), [#27](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/27), [#28](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/28), [#30](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/30), [#31](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/31), [#34](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/34)).
+- Update zeroconf requirement from ~=0.150 to ~=0.151 ([#25](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/25)).
+- Update websockets requirement from ~=16.0 to ~=17.2 ([#26](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/26)).
+- Update androidtvremote2 requirement from ~=0.3.1 to ~=0.3.2 ([#29](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/29)).
+- Update pyinstaller requirement from ~=6.21.0 to ~=6.22.3 ([#33](https://github.com/unfoldedcircle/ucr2-pyinstaller/pull/33)).
 
 ## 0.7.0 - 2026-07-01
 ### Changed
