@@ -11,7 +11,7 @@ zeroconf~=0.151
 # Android TV integration
 androidtvremote2~=0.3.2
 google_play_scraper~=1.2.7
-pillow~=12.3.0
+pillow~=13.0.0
 requests~=2.34.2
 pychromecast~=14.0.10
 
