@@ -63,5 +63,5 @@ From within the started container shell:
 ```shell
 cd /workspace/integration-foobar/
 pip install -r requirements.txt
-pyinstaller --clean --onefile --name intg-foobar intg-foobar/driver.py
+pyinstaller --clean --name intg-foobar intg-foobar/driver.py
 ```
